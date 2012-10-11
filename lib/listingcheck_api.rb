@@ -72,7 +72,7 @@ module ListingcheckApi
       @auth_token = options[:auth_token]
       @version = options[:version] || '1'
 
-      self.class.base_uri(options[:base_uri] || 'api.listingscan.com')
+      self.class.base_uri(options[:base_uri] || 'api.listingcheck.com')
       self.class.endpoint("api/v#{version}")
 
       add_query_options!(:auth_token => auth_token)
