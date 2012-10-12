@@ -31,10 +31,12 @@ module ListingcheckApi
 
     property :rating
     property :reviews_count
-    property :checkins.count
+    property :checkins_count
     property :likes_count
     property :talking_about_count
     property :were_here_count
+
+    property :claimed
   end
 
   class Place < APISmith::Smash
