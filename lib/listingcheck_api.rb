@@ -9,7 +9,8 @@ require 'api_smith'
 # api.post('listings_scans.json', {:extra_query => {:listings_scan => scan}})
 # api.perform_scan
 # api.listing('facebook_places_listing', 142709532406955)
-# api.create_listing('facebook_places_listing', )
+# api.refresh_listing('facebook_places_listing', 142709532406955)
+# api.create_listing('facebook_places_listing', 142709532406955)
 module ListingcheckApi
 
   class Listing < APISmith::Smash
@@ -17,11 +18,23 @@ module ListingcheckApi
     property :uid
     property :url
     property :name
-    property :phone
     property :full_address
     property :country_code
+
+    property :phone
+    property :fax
+    property :website
+    property :email
+
     property :lat
     property :lng
+
+    property :rating
+    property :reviews_count
+    property :checkins.count
+    property :likes_count
+    property :talking_about_count
+    property :were_here_count
   end
 
   class Place < APISmith::Smash
@@ -102,6 +115,11 @@ module ListingcheckApi
     # Gets or creates a new Listing of a particular type.
     def create_listing(type, uid)
       self.put("listing_types/#{type}/listings/#{uid}.json", :transform => Listing)
+    end
+
+    # Updates an existing Listing of a particular type with the latest info from the API.
+    def refresh_listing(type, uid)
+      self.put("listing_types/#{type}/listings/#{uid}/refresh.json", :transform => Listing)
     end
 
     def check_response_errors(response)
