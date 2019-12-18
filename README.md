@@ -6,7 +6,7 @@ ListingCheck allows you to scan the Internet for listings of a business. Multipl
 
 For more information on this Gem contact joost@joopp.com.
 
-## Installation
+## Installation!
 
 Add this line to your application's Gemfile:
 
